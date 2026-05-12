@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Jio ଗ୍ରାହକ ମତାମତ ଫର୍ମ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --jio-blue: #0033A0;
+    --jio-red: #E31837;
+    --jio-dark: #001F5B;
+    --jio-light: #E8EFFF;
+    --jio-teal: #00B4D8;
+    --jio-green: #00C48C;
+    --card-shadow: 0 4px 24px rgba(0,51,160,0.10);
+    --radius: 16px;
+    --font-or: 'Noto Sans Oriya', sans-serif;
+    --font-en: 'Poppins', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: linear-gradient(135deg, #001F5B 0%, #0033A0 50%, #0055CC 100%);
+    min-height: 100vh;
+    font-family: var(--font-en);
+    padding: 16px;
+  }
+
+  .wrapper {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .header {
+    background: white;
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: 20px 24px 16px;
+    text-align: center;
+    border-bottom: 3px solid var(--jio-light);
+  }
+
+  .jio-logo {
+    width: 64px; height: 64px;
+    background: var(--jio-blue);
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 16px rgba(0,51,160,0.30);
+  }
+  .jio-logo span {
+    color: white;
+    font-family: var(--font-en);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+  }
+
+  .header h1 {
+    font-family: var(--font-or);
+    color: var(--jio-dark);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .header h2 {
+    font-family: var(--font-en);
+    color: #666;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* BODY CARD */
+  .form-body {
+    background: #F7F9FF;
+    padding: 20px 20px 28px;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--card-shadow);
+  }
+
+  /* META FIELDS */
+  .meta-section {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 16px;
+    border: 1.5px solid #E0E8FF;
+  }
+
+  .field-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+  }
+  .field-row:last-child { margin-bottom: 0; }
+
+  .field-label {
+    font-family: var(--font-or);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--jio-dark);
+    margin-bottom: 5px;
+  }
+  .field-label .en {
+    font-family: var(--font-en);
+    font-size: 10px;
+    color: #888;
+    font-weight: 400;
+    margin-left: 4px;
+  }
+
+  .field-input {
+    border: 1.5px solid #CBD5E8;
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-family: var(--font-en);
+    font-size: 14px;
+    color: #222;
+    background: #FAFBFF;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+  .field-input:focus {
+    border-color: var(--jio-blue);
+    box-shadow: 0 0 0 3px rgba(0,51,160,0.08);
+  }
+
+  select.field-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230033A0' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    cursor: pointer;
+  }
+
+  /* SECTION HEADERS */
+  .section-header {
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-header.mobile { background: linear-gradient(90deg, #0033A0, #0055CC); }
+  .section-header.home   { background: linear-gradient(90deg, #006B6B, #00A8A8); }
+  .section-header.oppty  { background: linear-gradient(90deg, #B5460F, #E8650A); }
+  .section-header .icon { font-size: 20px; }
+  .section-header .titles { display: flex; flex-direction: column; }
+  .section-header .odia-title {
+    font-family: var(--font-or);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .section-header .en-title {
+    color: rgba(255,255,255,0.80);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* QUESTION CARD */
+  .question-card {
+    background: white;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border: 1.5px solid #E0E8FF;
+    transition: border-color 0.2s;
+  }
+  .question-card.answered { border-color: var(--jio-green); }
+
+  .q-text {
+    font-family: var(--font-or);
+    font-size: 13.5px;
+    color: #1a1a2e;
+    font-weight: 600;
+    margin-bottom: 2px;
+    line-height: 1.5;
+  }
+  .q-text-en {
+    font-size: 10.5px;
+    color: #888;
+    font-family: var(--font-en);
+    margin-bottom: 10px;
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 10px;
+  }
+
+  .radio-option {
+    flex: 1;
+    position: relative;
+  }
+  .radio-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+  }
+  .radio-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 2px solid #CBD5E8;
+    border-radius: 8px;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-family: var(--font-or);
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    transition: all 0.18s;
+    user-select: none;
+  }
+  .radio-label .dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2px solid #CBD5E8;
+    transition: all 0.18s;
+    flex-shrink: 0;
+  }
+
+  .radio-option input[type="radio"]:checked + .radio-label.yes {
+    background: #E8FFF6;
+    border-color: var(--jio-green);
+    color: #00845E;
+  }
+  .radio-option input[type="radio"]:checked + .radio-label.yes .dot {
+    background: var(--jio-green);
+    border-color: var(--jio-green);
+  }
+  .radio-option input[type="radio"]:checked + .radio-label.no {
+    background: #FFF0F3;
+    border-color: var(--jio-red);
+    color: var(--jio-red);
+  }
+  .radio-option input[type="radio"]:checked + .radio-label.no .dot {
+    background: var(--jio-red);
+    border-color: var(--jio-red);
+  }
+
+  /* FOOTER META */
+  .footer-meta {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 18px;
+    border: 2px dashed #B8C8F0;
+    margin-top: 6px;
+  }
+  .footer-meta-title {
+    font-family: var(--font-en);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--jio-blue);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  /* SUBMIT BUTTON */
+  .submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--jio-blue), #0055CC);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: var(--font-or);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 16px rgba(0,51,160,0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,51,160,0.45); }
+  .submit-btn:active { transform: translateY(0); }
+  .submit-btn:disabled { background: #aaa; box-shadow: none; cursor: not-allowed; transform: none; }
+
+  /* SUCCESS */
+  .success-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,20,60,0.85);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .success-overlay.show { display: flex; }
+  .success-card {
+    background: white;
+    border-radius: 20px;
+    padding: 36px 28px;
+    text-align: center;
+    max-width: 340px;
+    width: 100%;
+    animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes popIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+  .success-icon { font-size: 56px; margin-bottom: 12px; }
+  .success-card h3 {
+    font-family: var(--font-or);
+    font-size: 20px;
+    color: var(--jio-dark);
+    margin-bottom: 6px;
+  }
+  .success-card p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  .success-new-btn {
+    background: var(--jio-blue);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-family: var(--font-en);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+  }
+
+  /* PROGRESS BAR */
+  .progress-bar-wrap {
+    background: #E0E8FF;
+    border-radius: 8px;
+    height: 6px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--jio-green), var(--jio-teal));
+    border-radius: 8px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+  .progress-text {
+    font-size: 11px;
+    color: #888;
+    font-family: var(--font-en);
+    text-align: right;
+    margin-bottom: 4px;
+  }
+
+  /* ERROR */
+  .error-msg {
+    color: var(--jio-red);
+    font-size: 11px;
+    font-family: var(--font-en);
+    margin-top: 6px;
+    display: none;
+  }
+  .error-msg.show { display: block; }
+
+  .section-gap { margin-bottom: 16px; }
+
+  /* LOADING SPINNER */
+  .spinner {
+    width: 18px; height: 18px;
+    border: 2.5px solid rgba(255,255,255,0.4);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: none;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* APPOINTMENT DATE CARD */
+  .appt-card {
+    background: linear-gradient(135deg, #FFF8F0, #FFF3E8);
+    border: 2px solid #F0A060;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: 10px;
+    display: none;
+    align-items: flex-start;
+    gap: 12px;
+    animation: slideDown 0.3s ease;
+  }
+  .appt-card.visible { display: flex; }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .appt-icon { font-size: 26px; margin-top: 2px; flex-shrink: 0; }
+  .appt-content { flex: 1; }
+  .appt-input {
+    margin-top: 8px;
+    border-color: #F0A060;
+    background: white;
+  }
+  .appt-input:focus { border-color: #B5460F; box-shadow: 0 0 0 3px rgba(181,70,15,0.10); }
+  .appt-hint {
+    font-size: 10.5px;
+    color: #B5460F;
+    font-family: var(--font-en);
+    margin-top: 5px;
+    font-style: italic;
+  }
+
+  /* GEOTAG BAR */
+  .geo-bar {
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-en);
+    font-size: 12px;
+    border: 1.5px solid #CBD5E8;
+    background: #F7F9FF;
+    transition: all 0.3s;
+  }
+  .geo-bar.acquiring { border-color: #F0A060; background: #FFF8F0; }
+  .geo-bar.success   { border-color: var(--jio-green); background: #E8FFF6; }
+  .geo-bar.error     { border-color: var(--jio-red); background: #FFF0F3; }
+
+  .geo-icon { font-size: 20px; flex-shrink: 0; }
+  .geo-info { flex: 1; }
+  .geo-status { font-weight: 600; color: #333; font-size: 12px; }
+  .geo-status.acquiring { color: #B5460F; }
+  .geo-status.success   { color: #007A56; }
+  .geo-status.error     { color: var(--jio-red); }
+  .geo-coords { font-size: 10.5px; color: #666; margin-top: 1px; }
+
+  .geo-map-btn {
+    background: var(--jio-blue);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 10px;
+    font-family: var(--font-en);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: none;
+    white-space: nowrap;
+  }
+  .geo-map-btn.show { display: inline-block; }
+
+  .geo-retry-btn {
+    background: none;
+    color: var(--jio-red);
+    border: 1px solid var(--jio-red);
+    border-radius: 6px;
+    padding: 4px 9px;
+    font-size: 10px;
+    font-family: var(--font-en);
+    font-weight: 600;
+    cursor: pointer;
+    display: none;
+    white-space: nowrap;
+  }
+  .geo-retry-btn.show { display: inline-block; }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="jio-logo"><span>Jio</span></div>
+    <h1>ଗ୍ରାହକ ମତାମତ ଫର୍ମ</h1>
+    <h2>Customer Feedback Survey</h2>
+  </div>
+
+  <div class="form-body">
+
+    <!-- GEOTAG STATUS BAR -->
+    <div class="geo-bar acquiring" id="geoBar">
+      <span class="geo-icon">📍</span>
+      <div class="geo-info">
+        <div class="geo-status acquiring" id="geoStatus">Acquiring location…</div>
+        <div class="geo-coords" id="geoCoords">Please allow location access when prompted</div>
+      </div>
+      <a class="geo-map-btn" id="geoMapBtn" target="_blank">🗺 View</a>
+      <button type="button" class="geo-retry-btn" id="geoRetryBtn" onclick="captureGeo()">Retry</button>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="progress-text" id="progressText">0 of 8 answered</div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressBar"></div>
+    </div>
+
+    <form id="surveyForm" novalidate>
+
+      <!-- META FIELDS -->
+      <div class="meta-section">
+        <div class="field-row">
+          <label class="field-label">ତାରିଖ <span class="en">Date</span></label>
+          <input type="date" class="field-input" id="f_date" required>
+        </div>
+        <div class="field-row">
+          <label class="field-label">ଗ୍ରାହକଙ୍କ ନାମ <span class="en">Customer Name</span></label>
+          <input type="text" class="field-input" id="f_name" placeholder="Enter customer name" required>
+        </div>
+        <div class="field-row">
+          <label class="field-label">ଯୋଗାଯୋଗ ନମ୍ବର <span class="en">Contact Number</span></label>
+          <input type="tel" class="field-input" id="f_mobile" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}" required>
+        </div>
+      </div>
+
+      <!-- MOBILE SECTION -->
+      <div class="section-gap">
+        <div class="section-header mobile">
+          <span class="icon">📱</span>
+          <div class="titles">
+            <span class="odia-title">ମୋବାଇଲ</span>
+            <span class="en-title">Mobile Services</span>
+          </div>
+        </div>
+
+        <div class="question-card" id="qc_m1">
+          <div class="q-text">୧. ଆପଣଙ୍କ ମୋବାଇଲ ରେ 5000GB ଷ୍ଟୋରେଜ ଅଛି କି?</div>
+          <div class="q-text-en">Do you have 5000GB storage on your mobile?</div>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="m1" value="Yes"> 
+              <span class="radio-label yes"><span class="dot"></span>ହଁ (Yes)</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="m1" value="No">
+              <span class="radio-label no"><span class="dot"></span>ନା (No)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-card" id="qc_m2">
+          <div class="q-text">୨. ଆପଣଙ୍କ ମୋବାଇଲ ରେ ଅସୀମିତ ଡାଟା ଅଛି କି?</div>
+          <div class="q-text-en">Do you have Unlimited Data on your mobile?</div>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="m2" value="Yes">
+              <span class="radio-label yes"><span class="dot"></span>ହଁ (Yes)</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="m2" value="No">
+              <span class="radio-label no"><span class="dot"></span>ନା (No)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-card" id="qc_m3">
+          <div class="q-text">୩. ଆପଣଙ୍କ ମୋବାଇଲ ରେ JioHotStar ଅଛି କି?</div>
+          <div class="q-text-en">Do you have JioHotStar on your mobile?</div>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="m3" value="Yes">
+              <span class="radio-label yes"><span class="dot"></span>ହଁ (Yes)</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="m3" value="No">
+              <span class="radio-label no"><span class="dot"></span>ନା (No)</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOME ENTERTAINMENT SECTION -->
+      <div class="section-gap">
+        <div class="section-header home">
+          <span class="icon">📺</span>
+          <div class="titles">
+            <span class="odia-title">ଘରୋଇ ମନୋରଞ୍ଜନ (ଟିଭି)</span>
+            <span class="en-title">Home Entertainment (TV)</span>
+          </div>
+        </div>
+
+        <div class="question-card" id="qc_t1">
+          <div class="q-text">୧. ଆପଣଙ୍କ ଟିଭିରେ 1000 ଚ୍ୟାନେଲ ଅଛି କି?</div>
+          <div class="q-text-en">Do you have 1000 Channels on your TV?</div>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="t1" value="Yes">
+              <span class="radio-label yes"><span class="dot"></span>ହଁ (Yes)</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="t1" value="No">
+              <span class="radio-label no"><span class="dot"></span>ନା (No)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-card" id="qc_t2">
+          <div class="q-text">୨. ଆପଣଙ୍କ ଟିଭିରେ 12 OTT ଆପ ଅଛି କି?</div>
+          <div class="q-text-en">Do you have 12 OTT Apps on your TV?</div>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="t2" value="Yes">
+              <span class="radio-label yes"><span class="dot"></span>ହଁ (Yes)</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="t2" value="No">
+              <span class="radio-label no"><span class="dot"></span>ନା (No)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-card" id="qc_t3">
+          <div class="q-text">୩. ଆପଣଙ୍କ ଘରେ ଘାଇ-ଫାଇ (Wi-Fi) ଅଛି କି?</div>
+          <div class="q-text-en">Do you have Wi-Fi at home?</div>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="t3" value="Yes">
+              <span class="radio-label yes"><span class="dot"></span>ହଁ (Yes)</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="t3" value="No">
+              <span class="radio-label no"><span class="dot"></span>ନା (No)</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SALES OPPORTUNITY SECTION -->
+      <div class="section-gap">
+        <div class="section-header oppty">
+          <span class="icon">🎯</span>
+          <div class="titles">
+            <span class="odia-title">ବିକ୍ରୟ ସୁଯୋଗ</span>
+            <span class="en-title">Sales Opportunity</span>
+          </div>
+        </div>
+
+        <div class="question-card" id="qc_s1">
+          <div class="q-text">୧. AirFiber ପାଇଁ ଆଗ୍ରହୀ କି?</div>
+          <div class="q-text-en">Interested for AirFiber?</div>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="s1" value="Yes">
+              <span class="radio-label yes"><span class="dot"></span>ହଁ (Yes)</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="s1" value="No">
+              <span class="radio-label no"><span class="dot"></span>ନା (No)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-card" id="qc_s2">
+          <div class="q-text">୨. MNP (ନମ୍ବର ପୋର୍ଟ) ପାଇଁ ଆଗ୍ରହୀ କି?</div>
+          <div class="q-text-en">Interested for MNP (Number Portability)?</div>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="s2" value="Yes">
+              <span class="radio-label yes"><span class="dot"></span>ହଁ (Yes)</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="s2" value="No">
+              <span class="radio-label no"><span class="dot"></span>ନା (No)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- APPOINTMENT DATE — shown only when s1 or s2 = Yes -->
+        <div class="appt-card" id="apptCard">
+          <div class="appt-icon">📅</div>
+          <div class="appt-content">
+            <div class="q-text">ନିଯୁକ୍ତି ତାରିଖ <span style="color:#B5460F;font-size:12px;">★</span></div>
+            <div class="q-text-en">Appointment Date (if interested)</div>
+            <input type="date" class="field-input appt-input" id="f_appt_date">
+            <div class="appt-hint">Select a preferred date for follow-up visit</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER META -->
+      <div class="footer-meta">
+        <div class="footer-meta-title">🔖 JPAM / JC Details (Field Use Only)</div>
+        <div class="two-col">
+          <div class="field-row">
+            <label class="field-label">Village / Town</label>
+            <input type="text" class="field-input" id="f_village" placeholder="e.g. Aska" required>
+          </div>
+          <div class="field-row">
+            <label class="field-label">JPAM ID</label>
+            <input type="text" class="field-input" id="f_jpam_id" placeholder="e.g. JP12345">
+          </div>
+          <div class="field-row">
+            <label class="field-label">JP Name</label>
+            <input type="text" class="field-input" id="f_jp_name" placeholder="JPAM full name" required>
+          </div>
+          <div class="field-row">
+            <label class="field-label">JC Name</label>
+            <select class="field-input" id="f_jc_name" required>
+              <option value="">— Select JC —</option>
+              <!-- ▶ EDIT: Add your 31 JC names here -->
+              <option>Berhampur</option>
+              <option>Chhatrapur</option>
+              <option>Bhanjanagar</option>
+              <option>Phulbani</option>
+              <option>G. Udayagiri</option>
+              <option>Aska</option>
+              <option>Kodala</option>
+              <option>Digapahandi</option>
+              <option>Chatrapur-2</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ERROR -->
+      <div class="error-msg" id="formError">⚠ Please fill all required fields and answer all 8 questions before submitting.</div>
+
+      <!-- SUBMIT -->
+      <button type="submit" class="submit-btn" id="submitBtn">
+        <span id="btnText">ଦାଖଲ କରନ୍ତୁ &nbsp;/ Submit</span>
+        <div class="spinner" id="spinner"></div>
+      </button>
+
+    </form>
+  </div>
+</div>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-card">
+    <div class="success-icon">✅</div>
+    <h3>ଧନ୍ୟବାଦ!</h3>
+    <p>Survey submitted successfully.<br>Data saved to Google Sheets.</p>
+    <button class="success-new-btn" onclick="resetForm()">Submit Another →</button>
+  </div>
+</div>
+
+<script>
+  // ══════════════════════════════════════════════
+  // ▶ STEP 1: Paste your Google Apps Script URL here
+  // ══════════════════════════════════════════════
+  const SHEET_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+  // Geolocation state
+  let geoData = { lat: null, lng: null, accuracy: null, mapsUrl: null, status: 'pending' };
+
+  function captureGeo() {
+    const bar    = document.getElementById('geoBar');
+    const status = document.getElementById('geoStatus');
+    const coords = document.getElementById('geoCoords');
+    const mapBtn = document.getElementById('geoMapBtn');
+    const retryBtn = document.getElementById('geoRetryBtn');
+
+    bar.className = 'geo-bar acquiring';
+    status.className = 'geo-status acquiring';
+    status.textContent = 'Acquiring location…';
+    coords.textContent = 'Please allow location access when prompted';
+    mapBtn.classList.remove('show');
+    retryBtn.classList.remove('show');
+    geoData = { lat: null, lng: null, accuracy: null, mapsUrl: null, status: 'pending' };
+
+    if (!navigator.geolocation) {
+      bar.className = 'geo-bar error';
+      status.className = 'geo-status error';
+      status.textContent = '⚠ Geolocation not supported';
+      coords.textContent = 'Use a modern browser (Chrome recommended)';
+      geoData.status = 'unsupported';
+      retryBtn.classList.remove('show');
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      function(pos) {
+        const lat = pos.coords.latitude.toFixed(6);
+        const lng = pos.coords.longitude.toFixed(6);
+        const acc = Math.round(pos.coords.accuracy);
+        const url = `https://www.google.com/maps?q=${lat},${lng}`;
+
+        geoData = { lat, lng, accuracy: acc, mapsUrl: url, status: 'success' };
+
+        bar.className = 'geo-bar success';
+        status.className = 'geo-status success';
+        status.textContent = '✅ Location captured';
+        coords.textContent = `${lat}, ${lng}  •  ±${acc}m accuracy`;
+        mapBtn.href = url;
+        mapBtn.classList.add('show');
+        retryBtn.classList.remove('show');
+      },
+      function(err) {
+        const msgs = {
+          1: 'Location permission denied — please allow access in browser settings',
+          2: 'Location unavailable — check GPS / network signal',
+          3: 'Location request timed out — move to open area and retry'
+        };
+        bar.className = 'geo-bar error';
+        status.className = 'geo-status error';
+        status.textContent = '⚠ Location not captured';
+        coords.textContent = msgs[err.code] || 'Unknown error';
+        geoData.status = 'failed';
+        retryBtn.classList.add('show');
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
+    );
+  }
+
+  // Capture on page load
+  captureGeo();
+
+  // Auto-fill today's date
+  document.getElementById('f_date').valueAsDate = new Date();
+
+  // Progress tracking
+  const radioNames = ['m1','m2','m3','t1','t2','t3','s1','s2'];
+  const cardMap = { m1:'qc_m1', m2:'qc_m2', m3:'qc_m3', t1:'qc_t1', t2:'qc_t2', t3:'qc_t3', s1:'qc_s1', s2:'qc_s2' };
+
+  function updateProgress() {
+    let answered = 0;
+    radioNames.forEach(name => {
+      const checked = document.querySelector(`input[name="${name}"]:checked`);
+      const card = document.getElementById(cardMap[name]);
+      if (checked) {
+        answered++;
+        card.classList.add('answered');
+      } else {
+        card.classList.remove('answered');
+      }
+    });
+    const pct = Math.round((answered / 8) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+    document.getElementById('progressText').textContent = `${answered} of 8 answered`;
+  }
+
+  document.querySelectorAll('input[type="radio"]').forEach(r => {
+    r.addEventListener('change', updateProgress);
+  });
+
+  // Show appointment date card when AirFiber OR MNP is Yes
+  function toggleApptCard() {
+    const s1 = document.querySelector('input[name="s1"]:checked');
+    const s2 = document.querySelector('input[name="s2"]:checked');
+    const interested = (s1 && s1.value === 'Yes') || (s2 && s2.value === 'Yes');
+    const card = document.getElementById('apptCard');
+    if (interested) {
+      card.classList.add('visible');
+    } else {
+      card.classList.remove('visible');
+      document.getElementById('f_appt_date').value = '';
+    }
+  }
+  document.querySelectorAll('input[name="s1"], input[name="s2"]').forEach(r => {
+    r.addEventListener('change', toggleApptCard);
+  });
+
+  // Form submission
+  document.getElementById('surveyForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    document.getElementById('formError').classList.remove('show');
+
+    // Validate
+    const requiredFields = ['f_date','f_name','f_mobile','f_village','f_jp_name','f_jc_name'];
+    let allFilled = requiredFields.every(id => document.getElementById(id).value.trim() !== '');
+    let allAnswered = radioNames.every(n => document.querySelector(`input[name="${n}"]:checked`));
+
+    if (!allFilled || !allAnswered) {
+      document.getElementById('formError').classList.add('show');
+      document.getElementById('formError').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Mobile validation
+    const mob = document.getElementById('f_mobile').value;
+    if (!/^[6-9]\d{9}$/.test(mob)) {
+      document.getElementById('formError').textContent = '⚠ Please enter a valid 10-digit mobile number.';
+      document.getElementById('formError').classList.add('show');
+      return;
+    }
+
+    // Show spinner
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    document.getElementById('btnText').textContent = 'Submitting…';
+    document.getElementById('spinner').style.display = 'block';
+
+    // Build payload
+    const payload = {
+      timestamp: new Date().toISOString(),
+      date: document.getElementById('f_date').value,
+      customer_name: document.getElementById('f_name').value.trim(),
+      mobile: document.getElementById('f_mobile').value.trim(),
+      m1_5gb_storage: document.querySelector('input[name="m1"]:checked').value,
+      m2_unlimited_data: document.querySelector('input[name="m2"]:checked').value,
+      m3_jio_hotstar: document.querySelector('input[name="m3"]:checked').value,
+      t1_1000_channels: document.querySelector('input[name="t1"]:checked').value,
+      t2_12_ott_apps: document.querySelector('input[name="t2"]:checked').value,
+      t3_wifi: document.querySelector('input[name="t3"]:checked').value,
+      s1_airfiber_interest: document.querySelector('input[name="s1"]:checked').value,
+      s2_mnp_interest: document.querySelector('input[name="s2"]:checked').value,
+      appointment_date: document.getElementById('f_appt_date').value || 'N/A',
+      geo_lat: geoData.lat || 'N/A',
+      geo_lng: geoData.lng || 'N/A',
+      geo_accuracy_m: geoData.accuracy || 'N/A',
+      geo_maps_url: geoData.mapsUrl || 'N/A',
+      geo_status: geoData.status,
+      village_town: document.getElementById('f_village').value.trim(),
+      jpam_id: document.getElementById('f_jpam_id').value.trim(),
+      jp_name: document.getElementById('f_jp_name').value.trim(),
+      jc_name: document.getElementById('f_jc_name').value
+    };
+
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      document.getElementById('successOverlay').classList.add('show');
+    } catch (err) {
+      alert('Network error. Please check your connection and try again.');
+    } finally {
+      btn.disabled = false;
+      document.getElementById('btnText').textContent = 'ଦାଖଲ କରନ୍ତୁ / Submit';
+      document.getElementById('spinner').style.display = 'none';
+    }
+  });
+
+  function resetForm() {
+    document.getElementById('surveyForm').reset();
+    document.getElementById('f_date').valueAsDate = new Date();
+    document.getElementById('successOverlay').classList.remove('show');
+    document.querySelectorAll('.question-card').forEach(c => c.classList.remove('answered'));
+    document.getElementById('progressBar').style.width = '0%';
+    document.getElementById('progressText').textContent = '0 of 8 answered';
+    document.getElementById('apptCard').classList.remove('visible');
+    document.getElementById('formError').classList.remove('show');
+    captureGeo();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
